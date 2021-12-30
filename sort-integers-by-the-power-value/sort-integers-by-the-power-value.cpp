@@ -1,20 +1,40 @@
+
 class Solution {
 public:
-    int power(int n){
-        int count=0;
-        int i=n;
-        while(i!=1){
-            if(i%2==0){
-                i/=2;
+
+    
+    
+    
+   
+    
+    int getKth(int lo, int hi, int k) {
+        int comp[1001]={0};
+        comp[1]=0;
+        comp[2]=1;
+        comp[3]=7;
+        
+        for(int i=4;i<=1000;i++){
+            int count=0;
+            int n=i;
+            while(n!=1){
+                if(n<=1000 && comp[n]!=0){
+                    comp[i]=comp[n]+count;
+                    break;
+                }
+              if(n%2==0){
+                n/=2;
                 count++;
             }else{
-                i=3*i+1;
+                n=3*n+1;
                 count++;
+            }   
             }
         }
-        return count;
-    }
-    int getKth(int lo, int hi, int k) {
+        
+        for(int i=0;i<50;i++){
+            cout<<comp[i];
+        }
+        
         
         vector<int>v;
         for(int i=lo;i<=hi;i++){
@@ -22,7 +42,7 @@ public:
         }
         vector<vector<int>>p;
         for(int i=0;i<v.size();i++){
-            int pwr= power(v[i]);
+            int pwr= comp[v[i]];
             vector<int>v1;
             v1.push_back(pwr);
             v1.push_back(v[i]);

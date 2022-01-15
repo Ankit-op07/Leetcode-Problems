@@ -21,29 +21,30 @@
  */
 class Solution {
 public:
+    // T.c = o(n);
+    // S.c = o(n);
+   // better  s.c =o(1);
     TreeNode* sortedListToBST(ListNode* head) {
-        vector<int>nums;
-        ListNode *curr=head;
-        while(curr!=NULL){
-            nums.push_back(curr->val);
-            curr=curr->next;
-        }
+       if(head==NULL)return NULL;
         
-        int l=0;
-        int r=nums.size()-1;
-        return fun(l,r,nums);
+        return fun(head,NULL);
         
     }
     
-    TreeNode *fun(int l,int r,vector<int>nums){
-        if(l>r)return NULL;
-        int mid=l+(r-l)/2;
-        
-        TreeNode *root = new TreeNode(nums[mid]);
-        root->left=fun(l,mid-1,nums);
-        root->right=fun(mid+1,r,nums);
+    TreeNode *fun(ListNode *head,ListNode * tail){
+        ListNode *slow=head;
+        ListNode*fast=head;
+        if(head==tail) return NULL;
+        while(fast!=tail && fast->next!=tail){
+            slow=slow->next;
+            fast=fast->next->next;
+            
+        }
+        TreeNode*root=new TreeNode(slow->val);
+        root->left=fun(head,slow);
+        root->right=fun(slow->next,tail);
         return root;
-        
-        
     }
+    
+   
 };

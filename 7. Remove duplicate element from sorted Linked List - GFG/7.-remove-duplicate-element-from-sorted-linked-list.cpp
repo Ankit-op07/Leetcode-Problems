@@ -72,10 +72,13 @@ Node *removeDuplicates(Node *head)
     
     while(next!=NULL){
         if(curr->data!=next->data){
+            if(curr->next!=next){
             curr->next=next;
-            curr=next;
-            next=next->next;
-        }else{
+            }
+                curr=next;
+                next=next->next;
+            }
+        else{
             next=next->next;
         }
     }

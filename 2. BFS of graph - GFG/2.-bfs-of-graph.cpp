@@ -36,7 +36,7 @@ class Solution {
     vector<int>visited(100000);
     
     for(int i=0;i<V;i++){
-        if(visited[i]){ continue;}
+     
          bfs(adj,0,ans,visited);
     }
     

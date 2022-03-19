@@ -11,21 +11,20 @@
  */
 class Solution {
 public:
-    
-    void helper(TreeNode * root,int level,int&maxx,int &ans){
-        if(root==NULL) return;
-        if(level>maxx){
-            ans=root->val;
-            maxx=level;
-        }
-        helper(root->left,level+1,maxx,ans);
-         helper(root->right,level+1,maxx,ans);
-    }
+   
     int findBottomLeftValue(TreeNode* root) {
-        int ans=root->val;
-        int level=0;
-        int maxx=0;
-        helper(root,level,maxx,ans);
-        return ans;
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty()) {
+            root=q.front(); // get the value before pop coz pop will not return anyy val
+            q.pop();
+            if (root->right) {
+                q.push(root->right);
+            }
+            if(root->left) q.push(root->left);
+        }
+        return root->val;
+        
     }
 };

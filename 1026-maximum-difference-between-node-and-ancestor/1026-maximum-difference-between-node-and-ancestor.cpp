@@ -18,7 +18,7 @@ public:
         maxi=max(maxi,root->val);
         mini=min(mini,root->val);
         
-        ans=max(ans,max(abs(maxi-root->val),abs(mini-root->val)));
+        ans=max(ans,abs(maxi-mini));
     
         dfs(root->left,maxi,mini,ans);
         dfs(root->right,maxi,mini,ans);

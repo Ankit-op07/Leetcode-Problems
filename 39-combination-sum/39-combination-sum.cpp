@@ -32,22 +32,30 @@ public:
             return;
         }
         
-        temp.push_back(cand[i]); //we are going to add this element
+//         temp.push_back(cand[i]); //we are going to add this element
         
-        if(target>=cand[i]){  
+//         if(target>=cand[i]){  
             
-            // but the sum should be less than target and if it is then i can again add the same element or if it is not then i would jump to the next index.
-        getCombination(i,cand,target-cand[i],temp,res);
-        }else{
-            getCombination(i+1,cand,target-cand[i],temp,res);  
+//             // but the sum should be less than target and if it is then i can again add the same element or if it is not then i would jump to the next index.
+//         getCombination(i,cand,target-cand[i],temp,res);
+//         }else{
+//             getCombination(i+1,cand,target-cand[i],temp,res);  
+//         }
+        
+//         temp.pop_back();
+      
+//         // here i am not including the element so i must have to go to the next index but sum should be checked
+//         if(target>=0){
+//         getCombination(i+1,cand,target,temp,res);
+//         }
+        
+        if(cand[i]<=target){
+            temp.push_back(cand[i]);
+            getCombination(i,cand,target-cand[i],temp,res);
+            temp.pop_back();
         }
         
-        temp.pop_back();
-      
-        // here i am not including the element so i must have to go to the next index but sum should be checked
-        if(target>=0){
         getCombination(i+1,cand,target,temp,res);
-        }
         
     }
     

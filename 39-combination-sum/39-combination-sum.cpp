@@ -34,7 +34,7 @@ public:
         
         temp.push_back(cand[i]); //we are going to add this element
         
-        if(target>=0){  
+        if(target>=cand[i]){  
             
             // but the sum should be less than target and if it is then i can again add the same element or if it is not then i would jump to the next index.
         getCombination(i,cand,target-cand[i],temp,res);

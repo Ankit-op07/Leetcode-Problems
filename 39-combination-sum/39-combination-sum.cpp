@@ -21,32 +21,32 @@ public:
 //      helper(cd,target,temp,ans,index+1);
 //    }
     
-    void getCombination(int i,vector<int>&cand,int target,vector<int>&temp,vector<vector<int>>&res,int sum){
+    void getCombination(int i,vector<int>&cand,int target,vector<int>&temp,vector<vector<int>>&res){
         int n=cand.size();
         
         //BASE CASE
         if(i==n){
-            if(sum==target){
+            if(!target){
                 res.push_back(temp);
             }
             return;
         }
         
         temp.push_back(cand[i]); //we are going to add this element
-        sum+=cand[i];
-        if(sum<=target){  
+        
+        if(target>=0){  
             
             // but the sum should be less than target and if it is then i can again add the same element or if it is not then i would jump to the next index.
-        getCombination(i,cand,target,temp,res,sum);
+        getCombination(i,cand,target-cand[i],temp,res);
         }else{
-            getCombination(i+1,cand,target,temp,res,sum);  
+            getCombination(i+1,cand,target-cand[i],temp,res);  
         }
         
         temp.pop_back();
-        sum-=cand[i];
+      
         // here i am not including the element so i must have to go to the next index but sum should be checked
-        if(sum<=target){
-        getCombination(i+1,cand,target,temp,res,sum);
+        if(target>=0){
+        getCombination(i+1,cand,target,temp,res);
         }
         
     }
@@ -62,7 +62,7 @@ public:
         vector<int>temp;
         vector<vector<int>> res;
         int sum=0;
-        getCombination(0,candidates,target,temp,res,sum);
+        getCombination(0,candidates,target,temp,res);
         
         return res;
         

@@ -25,7 +25,7 @@ public:
         int n=cand.size();
         
         //BASE CASE
-        if(i==n || sum==target){
+        if(i==n){
             if(sum==target){
                 res.push_back(temp);
             }

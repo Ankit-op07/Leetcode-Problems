@@ -32,9 +32,11 @@ public:
             return;
         }
         
-        temp.push_back(cand[i]);
+        temp.push_back(cand[i]); //we are going to add this element
         sum+=cand[i];
-        if(sum<=target){
+        if(sum<=target){  
+            
+            // but the sum should be less than target and if it is then i can again add the same element or if it is not then i would jump to the next index.
         getCombination(i,cand,target,temp,res,sum);
         }else{
             getCombination(i+1,cand,target,temp,res,sum);  
@@ -42,7 +44,7 @@ public:
         
         temp.pop_back();
         sum-=cand[i];
-        
+        // here i am not including the element so i must have to go to the next index but sum should be checked
         if(sum<=target){
         getCombination(i+1,cand,target,temp,res,sum);
         }

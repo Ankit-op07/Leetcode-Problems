@@ -32,8 +32,7 @@ public:
         vector<int>temp;
         sort(nums.begin(),nums.end());
          vector<vector<int>>res;
-        vector<int>k;
-        res.push_back(k);
+      
         fun(0,nums,temp,res);
        
         
@@ -45,17 +44,18 @@ public:
     }
     
     void fun(int ind,vector<int>&nums,vector<int>&temp,vector<vector<int>>&ans){
-        
+         ans.push_back(temp);
         if(ind==nums.size()){
-       
             return;
         }
+        
+        
         
         
         for(int i=ind;i<nums.size();i++){
             if(i==ind || i>ind && nums[i]!=nums[i-1]){
                 temp.push_back(nums[i]);
-                  ans.push_back(temp);
+                 
                 fun(i+1,nums,temp,ans);
                 temp.pop_back();
                  // fun(i+1,nums,temp,ans);
@@ -69,3 +69,11 @@ public:
         
     }
 };
+
+
+// OPTIMIZED one:
+
+// T.C = 2^n*n
+// S.C=0(2^n)*0(k);
+// Auxalary space for recursion 
+// O(n);

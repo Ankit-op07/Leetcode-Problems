@@ -41,18 +41,27 @@ public:
         return res;
     }
     
-    void fun(int i,vector<int>&nums,vector<int>&temp,set<vector<int>>&ans){
+    void fun(int ind,vector<int>&nums,vector<int>&temp,set<vector<int>>&ans){
         
-        if(i==nums.size()){
+        if(ind==nums.size()){
             ans.insert(temp);
             return;
         }
         
         
-        temp.push_back(nums[i]);
-        fun(i+1,nums,temp,ans);
-        temp.pop_back();
-        fun(i+1,nums,temp,ans);
+        for(int i=ind;i<nums.size();i++){
+            if(i==ind || i>ind && nums[i]!=nums[i-1]){
+                temp.push_back(nums[i]);
+                fun(i+1,nums,temp,ans);
+                temp.pop_back();
+                 fun(i+1,nums,temp,ans);
+            }
+        }
+        
+        // temp.push_back(nums[i]);
+        // fun(i+1,nums,temp,ans);
+        // temp.pop_back();
+        // fun(i+1,nums,temp,ans);
         
     }
 };

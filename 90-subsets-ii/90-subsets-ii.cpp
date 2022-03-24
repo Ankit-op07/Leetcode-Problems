@@ -31,20 +31,23 @@ public:
         set<vector<int>>ans;
         vector<int>temp;
         sort(nums.begin(),nums.end());
-        fun(0,nums,temp,ans);
-        vector<vector<int>>res;
+         vector<vector<int>>res;
+        vector<int>k;
+        res.push_back(k);
+        fun(0,nums,temp,res);
+       
         
-        for(auto p:ans){
-            res.push_back(p);
-        }
+        // for(auto p:ans){
+        //     res.push_back(p);
+        // }
         
         return res;
     }
     
-    void fun(int ind,vector<int>&nums,vector<int>&temp,set<vector<int>>&ans){
+    void fun(int ind,vector<int>&nums,vector<int>&temp,vector<vector<int>>&ans){
         
         if(ind==nums.size()){
-            ans.insert(temp);
+       
             return;
         }
         
@@ -52,9 +55,10 @@ public:
         for(int i=ind;i<nums.size();i++){
             if(i==ind || i>ind && nums[i]!=nums[i-1]){
                 temp.push_back(nums[i]);
+                  ans.push_back(temp);
                 fun(i+1,nums,temp,ans);
                 temp.pop_back();
-                 fun(i+1,nums,temp,ans);
+                 // fun(i+1,nums,temp,ans);
             }
         }
         

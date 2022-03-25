@@ -13,21 +13,30 @@ public:
 	
 	int findMaxSum(int *arr, int n) {
 	    
-	    vector<int>dp(n+1,-1);
-	    dp[1]=arr[0];
-	    dp[0]=0;
+	    int prev=arr[0];
+	    int sec_prev=0;
+	    int curr;
+	   // vector<int>dp(n+1,-1);
+	   // dp[1]=arr[0];
+	   // dp[0]=0;
 	    
 	    for(int i=2;i<=n;i++){
 	        
+	        int pick=arr[i-1]+sec_prev;
+	        int nonPick=prev;
+	        curr=max(pick,nonPick);
+	         sec_prev=prev;
+	        prev=curr;
 	       
-	        int pick=arr[i-1]+dp[i-2];
+	       
+	       // int pick=arr[i-1]+dp[i-2];
 	        
-	        int nonPick = dp[i-1];
+	       // int nonPick = dp[i-1];
 	        
-	        dp[i]=max(pick,nonPick);
+	       // dp[i]=max(pick,nonPick);
 	    }
 	    
-	    return dp[n];
+	    return prev;
     
      
 	}

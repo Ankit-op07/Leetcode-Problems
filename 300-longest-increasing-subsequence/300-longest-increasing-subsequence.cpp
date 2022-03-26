@@ -8,7 +8,12 @@ public:
         vector<int>dp(n,-1);
         
         for(int i=0;i<n;i++){
-            ans=max(ans,  helper(i,nums,dp));
+            if(dp[i]!=-1){
+                ans=max(ans,dp[i]);
+            }else{
+                ans=max(ans,  helper(i,nums,dp));
+            }
+            
         }
         
         return ans;

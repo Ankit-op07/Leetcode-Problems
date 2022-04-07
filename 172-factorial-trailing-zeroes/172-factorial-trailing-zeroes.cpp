@@ -8,10 +8,10 @@ public:
             int count=0;
             int k=i;
            
-            while(k%10==0){
-                k/=10;
-                count++;
-            }
+//             while(k%10==0){
+//                 k/=10;
+//                 count++;
+//             }
             
             
             while(k%5==0){

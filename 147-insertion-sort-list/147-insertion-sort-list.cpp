@@ -11,25 +11,24 @@
 class Solution {
 public:
     ListNode* insertionSortList(ListNode* head) {
-        vector<int>v;
-        ListNode *curr=head;
+      
+        int i=0;
         
-        while(curr!=NULL){
-            v.push_back(curr->val);
-            curr=curr->next;
+        while(i<5005){
+            
+            ListNode *curr=head;
+            
+            while(curr->next!=NULL){
+                if(curr->val>curr->next->val){
+                    int temp=curr->val;
+                   curr->val =  curr->next->val;
+                    curr->next->val = temp;
+                }
+                curr=curr->next;
+            }
+            
+            i++;
         }
-        sort(v.begin(),v.end());
-        ListNode *newList= new ListNode(0);
-        ListNode *current=newList;
-        
-        for(int i=0;i<v.size();i++){
-            ListNode * nd = new ListNode(v[i]);
-            current->next=nd;
-            current=nd;
-        }
-        current->next=NULL;
-        
-        return newList->next;
-        
+        return head;
     }
 };

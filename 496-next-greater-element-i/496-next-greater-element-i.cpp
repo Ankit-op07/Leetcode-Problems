@@ -24,7 +24,7 @@ public:
         }
         reverse(temp.begin(),temp.end());
         
-        map<int,int>mpp;
+        unordered_map<int,int>mpp;
         
         for(int i=0;i<n;i++){
             mpp[nums2[i]]=temp[i];
@@ -36,11 +36,6 @@ public:
             int x= nums1[i];
             ans.push_back(mpp[x]);
         }
-        return ans;
-        
-    
-        
-    
-        
+        return ans; 
     }
 };

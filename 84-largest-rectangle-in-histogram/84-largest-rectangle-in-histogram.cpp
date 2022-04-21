@@ -30,32 +30,34 @@ public:
       
       reverse(temp.begin(),temp.end());
      
-      stack<int>st2;
+      while(!st.empty()) st.pop();
         
         vector<int>temp2;
         
         for(int i=0;i<n;i++){
-            if(st2.empty()){
+            if(st.empty()){
                 temp2.push_back(-1);
-            }else if(!st2.empty() && arr[st2.top()]<arr[i]){
-                temp2.push_back(st2.top());
-            }else if(!st2.empty() && arr[st2.top()]>=arr[i]){
+            }else if(!st.empty() && arr[st.top()]<arr[i]){
+                temp2.push_back(st.top());
+            }else if(!st.empty() && arr[st.top()]>=arr[i]){
                 
                 
-                while(!st2.empty() && arr[st2.top()]>=arr[i]){
-                    st2.pop();
+                while(!st.empty() && arr[st.top()]>=arr[i]){
+                    st.pop();
                 }
-                 if(st2.empty()){
+                 if(st.empty()){
                   temp2.push_back(-1);
               }else{
-                  temp2.push_back(st2.top());
+                  temp2.push_back(st.top());
               }
                 
             }
             
-            st2.push(i);
+            st.push(i);
         }
-    
+        
+      
+        // cout<<temp.size()<<" "<<temp2.size();
         
         int ans=INT_MIN;
         

@@ -1,42 +1,28 @@
 class Solution {
 public:
     int longestSubarray(vector<int>& nums, int limit) {
-        deque<int>Max_dq;
-        deque<int>Min_dq;
+        multiset<int>st;
         
+        int s=0;
         int ans=INT_MIN;
-        
-       int s=0,e=0;
-        
-        while(e<nums.size()){
-            while(!Max_dq.empty() && nums[Max_dq.back()]<nums[e]){
-                Max_dq.pop_back();
-            }
+        for(int e=0;e<nums.size();e++){
+            // if(st.empty()){
+                st.insert(nums[e]);
+                
+            int mini=*st.begin();
+            int maxi=*st.rbegin();
             
-             while(!Min_dq.empty() && nums[Min_dq.back()]>nums[e]){
-                Min_dq.pop_back();
-            }
-            
-             Max_dq.push_back(e);
-            Min_dq.push_back(e); 
-             
-            int diff=abs(nums[Max_dq.front()] - nums[Min_dq.front()]);
+            int diff=maxi-mini;
             
             if(diff>limit){
+                // st.erase(nums[s]);
+auto it=st.find(nums[s]);
+                st.erase(it);
                 s++;
-                 if(!Max_dq.empty() && Max_dq.front()<s){
-                Max_dq.pop_front();
             }
-                 if(!Min_dq.empty() && Min_dq.front()<s){
-                Min_dq.pop_front();
-            }
-                
-                
-            }
-             ans=max(ans,e-s+1);
-             
-            e++;
-          
+            // cout<<s<<" "<<e<<endl;
+            ans=max(ans,e-s+1);
+        // st.insert(nums[e]);
              
         }
         return ans;

@@ -11,7 +11,6 @@ public:
                 int l = j+1;
                 int h=n-1;
                 int t=-(nums[i]+nums[j]);
-                vector<int>temp;
                 bool done = false;
                 while(l<=h){
                     int mid=l+(h-l)/2;
@@ -27,6 +26,7 @@ public:
                     }
                 }
                 if(done){
+                      vector<int>temp;
                     temp.push_back(nums[i]);
                     temp.push_back(nums[j]);
                     temp.push_back(t);

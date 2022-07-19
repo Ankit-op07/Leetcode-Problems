@@ -8,7 +8,7 @@ public:
         for(auto c:s){
             mpp[c]++;
         }
-       set<int>st;
+       unordered_set<int>st;
         int count=0;
         int maxi=INT_MIN;
         for(auto m:mpp){

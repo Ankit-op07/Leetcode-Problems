@@ -13,9 +13,9 @@ class Solution {
 public:
     int deepestLeavesSum(TreeNode* root) {
         int sum = 0;
-        int h=0;
+        int h=1;
         
-        helper(root,h,0,sum);
+        helper(root,h,1,sum);
         return sum;
     }
 

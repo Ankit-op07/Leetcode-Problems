@@ -1,6 +1,6 @@
 class Solution {
 public:
-   bool isMatch(string s, string p) {
+  bool isMatch(string s, string p) {
     int m = s.length(), n = p.length();
     int i = 0, j = 0, star = -1, ss = 0;
     while (i < m) {
@@ -21,4 +21,5 @@ public:
     while (j < n && p[j] == '*') ++j;
     return j == n;
 }
+
 };
